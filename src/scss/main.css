@@ -1,0 +1,18 @@
+:root {
+  --primary: #40659b;
+  --secondary: rgb(54, 204, 221);
+  --gap-xl: 50px;
+  --gap-md: 50px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {}
+body {
+  background-image: url(../img/demo.png);
+}
+
+body {
+  color: var(--primary);
+}/*# sourceMappingURL=main.css.map */
