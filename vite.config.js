@@ -3,9 +3,9 @@ import { ViteEjsPlugin } from "vite-plugin-ejs";
 import { glob } from "glob";
 
 async function globHtmlFiles(pattern) {
-  const files = await glob(pattern);  // 使用 await
+  const files = await glob(pattern);
   const entries = {};
-  files.forEach(file => {
+  files.forEach((file) => {
     const name = file.replace(/^src\/(.*?)\.html$/i, "$1");
     entries[name] = file;
   });
@@ -14,11 +14,10 @@ async function globHtmlFiles(pattern) {
 
 export default defineConfig(async () => ({
   plugins: [
-    ViteEjsPlugin((viteConfig) => ({
-      root: viteConfig,
+    ViteEjsPlugin({
       domain: "example.com",
-      title: "My Vue Project!",
-    })),
+      title: "My Vite Project!",
+    }),
   ],
   server: {
     open: "/index.html",
@@ -26,9 +25,9 @@ export default defineConfig(async () => ({
   build: {
     outDir: "../dist",
     rollupOptions: {
-      input: await globHtmlFiles("src/**/*.html"), // 這裡要加 await
+      input: await globHtmlFiles("src/**/*.html"),
     },
   },
-  base: "./",
+  base: "/testEmmaDesert/",  // 👈 修改這行為 GitHub Pages 的 repo 名稱
   root: "src",
 }));
